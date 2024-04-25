@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
-
+import { FontAwesome } from '@expo/vector-icons';
 import { Button } from '../components/Button';
 import { RootStackParamList } from '../navigation';
 import React, { useEffect, useState } from 'react';
@@ -32,8 +32,15 @@ export default function Overview() {
         style={styles.animeImage}
         source={{ uri: item.images.jpg.large_image_url }}  
         />
-        <Text style={styles.animeTitle}>{item.title}</Text>
-        
+        <View style={styles.animeDetails}>
+          <Text style={styles.animeTitle}>{item.title}</Text>
+          <Text>{item.episodes} Episodes</Text>
+          <View style={styles.animeDetailsScore}>
+            <FontAwesome name="star" size={20} color="gold" />
+            <Text> {item.score}</Text>
+          </View>
+          
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -52,7 +59,7 @@ export default function Overview() {
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
+    padding: 10,
 
   },
 
@@ -65,15 +72,24 @@ export const styles = StyleSheet.create({
 
   animeTitle: {
     fontSize: 20,
-    padding: 10,
-    marginBottom: 5,
     fontWeight: 'bold'
   },
 
   animeImage: {
     width: 100,
-    height: 100,
+    height: 120,
     borderRadius: 10 
+  },
+
+  animeDetails: {
+    flex: 1,
+    padding: 10,
+  },
+
+  animeDetailsScore: {
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 
   card: {
