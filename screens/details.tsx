@@ -3,6 +3,8 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 import { RootStackParamList } from '../navigation';
 import { FontAwesome } from '@expo/vector-icons';
 import { ScrollView } from 'react-native-gesture-handler';
+import { Button } from 'components/Button';
+import { Carousel } from 'components/Carousel';
 
 type DetailsSreenRouteProp = RouteProp<RootStackParamList, 'Details'>;
 
@@ -36,6 +38,10 @@ export default function Details({ route }) {
         <Text style={styles.descTitle}>{anime.title}</Text>
         <Text style={styles.descSynopsis}>{anime.synopsis}</Text>
       </View>
+
+      <Carousel
+      
+      />
     </ScrollView>
   );
 }
