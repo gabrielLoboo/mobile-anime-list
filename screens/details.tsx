@@ -2,6 +2,7 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { RootStackParamList } from '../navigation';
 import { FontAwesome } from '@expo/vector-icons';
+import { ScrollView } from 'react-native-gesture-handler';
 
 type DetailsSreenRouteProp = RouteProp<RootStackParamList, 'Details'>;
 
@@ -9,7 +10,7 @@ export default function Details({ route }) {
   const { anime } = route.params;
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Image
         style={styles.animeImage}
         source={{ uri: anime.images.jpg.large_image_url }}
@@ -30,7 +31,12 @@ export default function Details({ route }) {
         </View>
 
       </View>
-    </View>
+
+      <View style={styles.desc}>
+        <Text style={styles.descTitle}>{anime.title}</Text>
+        <Text style={styles.descSynopsis}>{anime.synopsis}</Text>
+      </View>
+    </ScrollView>
   );
 }
 
@@ -68,5 +74,18 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     marginLeft: 5,
+  },
+
+  desc: {
+    padding: 10
+  },
+
+  descTitle: {
+    fontWeight: 'bold',
+    fontSize: 20
+  },
+
+  descSynopsis: {
+    marginTop: 10,
   }
 });
