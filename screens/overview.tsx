@@ -26,7 +26,9 @@ export default function Overview() {
   }, [])
 
   const renderAnimeItem = ({ item }) => (
-    <TouchableOpacity>
+    <TouchableOpacity
+    onPress={()=> navigation.navigate('Details', {anime: item})}
+    >
       <View style={styles.card}>
         <Image
         style={styles.animeImage}
