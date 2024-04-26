@@ -49,7 +49,7 @@ export default function Overview() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Anime List</Text>
+      <Text style={styles.title}>Top Animes</Text>
       <FlatList
         data={animeList}
         renderItem={renderAnimeItem}

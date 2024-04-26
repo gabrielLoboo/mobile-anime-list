@@ -1,15 +1,17 @@
 import { RouteProp, useRoute } from '@react-navigation/native';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, Button } from 'react-native';
 import { RootStackParamList } from '../navigation';
 import { FontAwesome } from '@expo/vector-icons';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Button } from 'components/Button';
-import { Carousel } from 'components/Carousel';
+import YoutubeIframe from 'react-native-youtube-iframe';
+import { WebView } from 'react-native-webview';
+
 
 type DetailsSreenRouteProp = RouteProp<RootStackParamList, 'Details'>;
 
 export default function Details({ route }) {
   const { anime } = route.params;
+
 
   return (
     <ScrollView style={styles.container}>
@@ -35,13 +37,17 @@ export default function Details({ route }) {
       </View>
 
       <View style={styles.desc}>
+        
         <Text style={styles.descTitle}>{anime.title}</Text>
         <Text style={styles.descSynopsis}>{anime.synopsis}</Text>
-      </View>
 
-      <Carousel
-      
-      />
+        <Text style={styles.descTitle}>Trailer</Text>       
+          <YoutubeIframe
+          height={210}
+          play={true}
+          videoId={anime.trailer.youtube_id} 
+          />
+      </View>
     </ScrollView>
   );
 }
@@ -60,7 +66,7 @@ export const styles = StyleSheet.create({
 
   card: {
     padding: 15,
-    margin: 10,
+    marginTop: 10,
     borderRadius: 20,
     backgroundColor: '#ffff',
     elevation: 3,
@@ -88,10 +94,24 @@ export const styles = StyleSheet.create({
 
   descTitle: {
     fontWeight: 'bold',
-    fontSize: 20
+    fontSize: 25,
+    marginTop: 15,
+    marginBottom:10
   },
 
   descSynopsis: {
     marginTop: 10,
-  }
+  },
+
+  video: {
+    flex: 1,
+    padding: 10,
+    alignSelf: 'stretch'
+  },
+
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

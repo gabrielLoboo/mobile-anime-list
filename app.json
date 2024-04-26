@@ -3,6 +3,7 @@
     "name": "mobile-anime-list",
     "slug": "mobile-anime-list",
     "version": "1.0.0",
+    "jsEngine": "hermes",
 
     "web": {
       "favicon": "./assets/favicon.png"
