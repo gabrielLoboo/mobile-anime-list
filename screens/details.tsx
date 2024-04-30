@@ -20,6 +20,14 @@ export default function Details({ route }) {
         source={{ uri: anime.images.jpg.large_image_url }}
 
       / >     
+
+      <View style={styles.card}>
+        <View style={styles.cardInfos}>
+        <FontAwesome name="bookmark" size={20} color="black" />
+        <Text style={styles.cardText}> Genres: {anime.genres.map(genre => genre.name).join(', ')}</Text>
+        </View>
+      </View>
+
       <View style={styles.card}>
         
         <View style={styles.cardInfos}>
