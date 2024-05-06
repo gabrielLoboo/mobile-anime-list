@@ -2,16 +2,18 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
-import { Button } from '../components/Button';
 import { RootStackParamList } from '../navigation';
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
+import { SearchBar } from 'components/SearchBar';
 
 type OverviewScreenNavigationProps = StackNavigationProp<RootStackParamList, 'Overview'>;
 
 export default function Overview() {
   const navigation = useNavigation<OverviewScreenNavigationProps>();
   const [animeList, setAnimeList] = useState([]);
+
+  
 
   useEffect(()=>{
 
@@ -49,7 +51,7 @@ export default function Overview() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Top Animes</Text>
+      <SearchBar />
       <FlatList
         data={animeList}
         renderItem={renderAnimeItem}
@@ -62,14 +64,13 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-
   },
 
   title: {
     fontWeight: 'bold',
     fontSize: 40,
     textAlign: 'center',
-    marginBottom: 30
+    marginBottom: 30,
   },
 
   animeTitle: {
